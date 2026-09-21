@@ -6,22 +6,21 @@ import (
 	"time"
 )
 
-package main
 //Gloabal variables shared between functions -Bad idea
 
-func main(){
+func main() {
 	var wg sync.WaitGroup
 	barrier := make(chan bool)
 
-	doStuffOne:= func() bool{
+	doStuffOne := func() bool {
 		fmt.Println("StuffOne - Part A")
 		//wait here
 		fmt.Println("StuffOne - Part B")
 		wg.Done()
 		return true
 	}
-	doSuffTwo:= func() bool{
-		time.Sleep(time.Second*5)
+	doSuffTwo := func() bool {
+		time.Sleep(time.Second * 5)
 		fmt.Println("StuffTwo - Part A")
 		//wait here
 		<-barrier

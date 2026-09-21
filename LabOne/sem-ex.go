@@ -1,11 +1,11 @@
-package main
+package LabOne
 
 import (
 	"context"
 	"fmt"
 	"log"
 	"runtime"
-
+	//Mykhailo Balaker helping with semaphore
 	"golang.org/x/sync/semaphore"
 )
 
@@ -26,7 +26,7 @@ func main() {
 	//Compute the output using up to maxWorkers goroutines at a time.
 	for i := range out {
 		//When maxWorkers go routines are in flight, ACquire blocks until one of the workers finshes
-		if err := ssem.Acquire(ctx, 1); err != nil {
+		if err := sem.Acquire(ctx, 1); err != nil {
 			log.Printf("Failed to acquire semaphore: %v", err)
 			break
 		}

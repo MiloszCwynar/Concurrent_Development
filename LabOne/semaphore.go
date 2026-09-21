@@ -1,31 +1,34 @@
-package main
+package LabOne
+
 import (
 	"fmt"
 	"sync"
 	"time"
 )
-//make struct containing channel
-//add init, acquire and release
-type semaphore struct {
+
+// make struct containing channel
+// add init, acquire and release
+type Semaphore struct {
 	theCounter chan struct{}
 }
 
-funcAcquite(sem *Semaphore)
+func Acquire(sem *Semaphore) {}
+
 func main() {
-	maxGoroutines:=5
-	semaphore:=make(chan struct{}, maxGoroutines)
+	maxGoroutines := 5
+	semaphore := make(chan struct{}, maxGoroutines)
 
 	var wg sync.WaitGroup
-	for i:=0;i<20;i++{
+	for i := 0; i < 20; i++ {
 		wg.Add(1)
-		go func(i int){
+		go func(i int) {
 			defer wg.Done()
-			semaphore<-struct{}{}
-			defer func() {<-semaphore}()
+			semaphore <- struct{}{}
+			defer func() { <-semaphore }()
 
 			//simulate a task
 			fmt.Println("running task %d\n", i)
-			time.Sleep(2 *time.Second)
+			time.Sleep(2 * time.Second)
 		}(i)
 	}
 	wg.Wait()
