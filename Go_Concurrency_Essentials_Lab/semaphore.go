@@ -1,4 +1,4 @@
-package LabOne
+package main
 
 import (
 	"fmt"
@@ -12,7 +12,9 @@ type Semaphore struct {
 	theCounter chan struct{}
 }
 
-func Acquire(sem *Semaphore) {}
+func Acquire(sem *Semaphore) {
+
+}
 
 func main() {
 	maxGoroutines := 5

@@ -1,4 +1,4 @@
-package LabOne
+package main
 
 import (
 	"fmt"
@@ -15,11 +15,13 @@ func main() {
 	doStuffOne := func() bool {
 		fmt.Println("StuffOne - Part A")
 		//wait here
+		time.Sleep(time.Second * 5)
+		barrier <- true
 		fmt.Println("StuffOne - Part B")
 		wg.Done()
 		return true
 	}
-	doSuffTwo := func() bool {
+	doStuffTwo := func() bool {
 		time.Sleep(time.Second * 5)
 		fmt.Println("StuffTwo - Part A")
 		//wait here
@@ -30,6 +32,6 @@ func main() {
 	}
 	wg.Add(2)
 	go doStuffOne()
-	go doSuffTwo()
-	wg.Wait() //wait here untill everyone (10 go routines) is done
+	go doStuffTwo()
+	wg.Wait() //wait here until everyone (10 go routines) is done
 }

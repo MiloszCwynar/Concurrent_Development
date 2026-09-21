@@ -1,4 +1,4 @@
-package LabOne
+package main
 
 import (
 	"context"
@@ -60,7 +60,7 @@ func collatzSteps(n int) (steps int) {
 			n /= 2
 			continue
 		}
-		const maxInt = int(^unit(0) >> 1)
+		const maxInt = int(^uint(0) >> 1)
 		if n > (maxInt-1)/3 {
 			panic("overflow")
 		}

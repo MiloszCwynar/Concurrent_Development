@@ -1,4 +1,4 @@
-package LabOne
+package main
 
 import (
 	"fmt"
@@ -21,8 +21,8 @@ func main() {
 	var total atomic.Int64
 
 	//for lopp using range option
-	for range 10 {
-		//the waitgroup is used as a barrier
+	for i := 0; i < 10; i++ {
+		//the wait group is used as a barrier
 		//init it to number of go routines
 		wg.Add(1)
 		go addsAtomic(1000, &total)

@@ -1,4 +1,4 @@
-package LabOne
+package main
 
 import (
 	"fmt"
